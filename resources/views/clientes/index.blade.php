@@ -1,11 +1,16 @@
 <h1>CLIENTES</h1>
 <a href="{{ route('clientes.create') }}">Adicionar cliente</a>
-<ol>
+<ul>
     @foreach ($clientes as $c)
         <li>
-            {{ $c['nome'] }} | 
-            <a href="{{ route('clientes.destroy', $c['id']) }}">Deletar</a> |
-            <a href="{{ route('clientes.show', $c['id']) }}">Detalhes</a>
+            {{ $c['id']}} | {{ $c['nome'] }} | 
+            <a href="{{ route('clientes.show', $c['id']) }}">Detalhes</a> |
+            <a href="{{ route('clientes.edit', $c['id']) }}">Editar</a> |
+            <form action="{{ route('clientes.destroy', $c['id']) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <input type="submit" value="Deletar">
+            </form>
         </li> 
     @endforeach
-</ol>
+</ul>
