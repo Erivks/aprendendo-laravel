@@ -26,7 +26,7 @@ Route::get('departamentos', function() {
 })->name('departamentos');
 
 Route::get('opcoes/{opcao?}', function ($opcao = null) {
-    return view('outras.opcoes', compact([$opcao]));
+    return view('outras.opcoes')->with('opcao', $opcao);
 })->name('opcoes');
 /*
 #Usando Controller
